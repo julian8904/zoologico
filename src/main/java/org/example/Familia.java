@@ -1,9 +1,8 @@
 package org.example;
 
 public class Familia {
-
-    Animal papa="Dinosaurin";
-    Animal mama="Tiburosin";
+    Animal papa;
+    Animal mama;
     Animal hijo;
 
     public Familia(Animal papa, Animal mama) {
@@ -11,40 +10,17 @@ public class Familia {
         this.mama = mama;
     }
 
-    public  imprimirFamilia(){
-
-        //Este metodo muestra los nombres de los integrantes de la familia
-        system.out.println(
-                "El papá es: "+this.papa.nombre+
-                        "\nLa mamá es: "+this.mama.nombre+
-                            "\nEl hijo es: "+this.hijo.nombre
-        )
-
+    public void imprimirFamilia() {
+        String nombreHijo = (hijo != null) ? hijo.getNombre() : "No hay hijo";
+        System.out.println("El papá es: " + papa.getNombre() + ", la mamá es: " + mama.getNombre() + ", el hijo es: " + nombreHijo);
     }
 
     public void tenerHijo(String nombre){
-
-        if(this.papa.pareja!=null){
-
-            Animal hijo= new Animal();
-            hijo.nombre=nombre;
-            hijo.peso=1;
-            double random = Math.random();
-            if(random<0.5){
-                hijo.genero="F";
-            }else{
-                hijo.genero="M";
-            }
-            this.hijo=hijo;
-
-        }else{
+        if (this.papa != null && this.mama != null) {
+            Animal nuevoHijo = new Animal("cebrallo", "masculino",120, "sin pareja"); // Aquí deberías establecer el género del hijo
+            this.hijo = nuevoHijo;
+        } else {
             System.out.println("Aun no puedes tener hijos");
         }
-
-
     }
-
-
-
-
 }
